@@ -50,4 +50,8 @@ def get_password(split_input:list[str] = split_puzzle_input, start_index:int = 5
             count += 1
     return count
 
+### ---------------------
+### SOLUTION OF PUZZLE 1:
+### ---------------------
+
 print(get_password(split_puzzle_input))
