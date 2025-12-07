@@ -13,12 +13,14 @@ def split_input(inputs:str = puzzle_input) ->  Optional[list[str]]:
                 tmp += char
             elif count == 2:
                 splited_input.append(tmp)
-                tmp = ''
-                count = 0
+                tmp = char
+                count = 1
             else:
                 print("ERROR?")
         else:
             tmp += char
-            
-            
-        
+    
+    return splited_input
+
+split = split_input(puzzle_input)
+print(split)
