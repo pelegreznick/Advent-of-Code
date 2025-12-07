@@ -72,3 +72,46 @@ part_1_solution = get_password(split_puzzle_input)
 ### PART 2: ###
 ### ------- ###
 
+def get_password_part_2(split_input:list[str] = split_puzzle_input, start_index:int = 50) -> Optional[int]:
+    dial = start_index
+    count = 0
+    tmp = 50
+    for rotation in split_input:
+        direction = rotation[0]
+        amount = int(rotation[1:])
+        print(f"[DEBUG] rotation: {rotation}\n[DEBUG] dir/amount: {direction}/{amount}\n[DEBUG] dial before change: {dial}")
+
+        if direction == 'R':
+            dial += amount
+        elif direction == 'L':
+            dial -= amount
+        else:
+            print(f"[ERR] Parsing split input {rotation}.")
+            exit()
+        
+        print(f"[DEBUG] dial after change: {dial}\n[DEBUG] count before calibration: {count}")
+        
+        if dial == 0:
+            count += 1
+            continue
+
+        if dial > 99:
+            count += dial // 99
+            dial = dial % 99
+        while dial < 0:
+            dial += 100
+            if tmp != 0:
+                count += 1
+            
+
+        
+
+        tmp = dial
+
+        print(f"[DEBUG] dial after calibration: {dial}\n[DEBUG] count after calibration: {count}\n")
+
+    return count
+
+
+part_2_solution = get_password_part_2(split_puzzle_input)
+print(part_2_solution)
